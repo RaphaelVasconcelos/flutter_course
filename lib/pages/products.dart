@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_course/product_manager.dart';
 
-class ProductsPage extends StatelessWidget{
+class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Easylist'),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            AppBar(
+              automaticallyImplyLeading: false,
+              title: Text('Choose'),
+            ),
+            ListTile(
+              title: Text('Manage Products'),
+              onTap: () {},
+            )
+          ],
         ),
-        body: ProductManager(),
-      );
+      ),
+      appBar: AppBar(
+        title: Text('Easylist'),
+      ),
+      body: ProductManager(),
+    );
   }
 }
