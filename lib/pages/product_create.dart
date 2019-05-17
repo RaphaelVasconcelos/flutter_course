@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProductCreatePage extends StatefulWidget {
+  final Function addProduct;
+
+  ProductCreatePage(this.addProduct);
+
   @override
   State<StatefulWidget> createState() {
     return _ProductCreateState();
@@ -52,7 +56,15 @@ class _ProductCreateState extends State<ProductCreatePage> {
           ),
           RaisedButton(
             child: Text('Save'),
-            onPressed: () {},
+            onPressed: () {
+              final Map<String, dynamic> product = {
+                'title': titleValue,
+                'description': descriptionValue,
+                'price': priceValue,
+                'image': 'assets/food.jpg',
+              };
+              widget.addProduct(product);
+            },
           ),
         ],
       ),
