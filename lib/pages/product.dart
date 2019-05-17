@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
@@ -9,7 +11,8 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
+      onWillPop: () {
+        print('Back button pressed!');
         Navigator.pop(context, false);
         return Future.value(false);
       },
@@ -32,7 +35,7 @@ class ProductPage extends StatelessWidget {
                 child: Text('DELETE'),
                 onPressed: () => Navigator.pop(context, true),
               ),
-            ),
+            )
           ],
         ),
       ),
