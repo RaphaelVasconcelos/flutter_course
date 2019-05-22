@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_course/widgets/products/address_tag.dart';
+import 'package:flutter_course/widgets/ui_elements/title_default.dart';
 
 class ProductPage extends StatelessWidget {
   final String title;
@@ -31,14 +33,7 @@ class ProductPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 26.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Oswald',
-                    ),
-                  ),
+                  TitleDefault(title),
                   SizedBox(
                     width: 8.0,
                   ),
@@ -58,17 +53,7 @@ class ProductPage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 1.0),
-                borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: Text(
-                'Union Square, San Francisco',
-                style: TextStyle(fontFamily: 'Oswald', color: Colors.grey),
-              ),
-            ),
+            AddressTag('Union Square, San Francisco'),
             SizedBox(
               height: 10.0,
             ),
