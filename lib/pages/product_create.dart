@@ -27,6 +27,11 @@ class _ProductCreateState extends State<ProductCreatePage> {
           _titleValue = value;
         });
       },
+      validator: (String value){
+        if(value.isEmpty){
+          return 'Title is required';
+        }
+      },
     );
   }
 
@@ -59,6 +64,9 @@ class _ProductCreateState extends State<ProductCreatePage> {
   }
 
   void _submitForm() {
+    if (!_formKey.currentState.validate()){
+      return;
+    }
     _formKey.currentState.save();
     final Map<String, dynamic> product = {
       'title': _titleValue,
