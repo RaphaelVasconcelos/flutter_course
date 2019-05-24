@@ -36,7 +36,7 @@ class _AuthPageState extends State<AuthPage> {
       ),
       keyboardType: TextInputType.emailAddress,
       onSaved: (String value) {
-        _formData['email'] = double.parse(value);
+        _formData['email'] = value;
       },
       validator: (String value) {
         if (value.isEmpty ||
