@@ -13,16 +13,13 @@ class _AuthPageState extends State<AuthPage> {
     'password': null,
     'acceptTerms': false
   };
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   DecorationImage _buildBackgroundImage() {
     return DecorationImage(
-      colorFilter: ColorFilter.mode(
-        Colors.black.withOpacity(0.3),
-        BlendMode.dstATop,
-      ),
       fit: BoxFit.cover,
+      colorFilter:
+          ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
       image: AssetImage('assets/background.jpg'),
     );
   }
@@ -30,20 +27,17 @@ class _AuthPageState extends State<AuthPage> {
   Widget _buildEmailTextField() {
     return TextFormField(
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: 'E-mail',
-      ),
+          labelText: 'E-Mail', filled: true, fillColor: Colors.white),
       keyboardType: TextInputType.emailAddress,
-      onSaved: (String value) {
-        _formData['email'] = value;
-      },
       validator: (String value) {
         if (value.isEmpty ||
             !RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
                 .hasMatch(value)) {
-          return 'E-mail is required and must be valid.';
+          return 'Please enter a valid email';
         }
+      },
+      onSaved: (String value) {
+        _formData['email'] = value;
       },
     );
   }
@@ -51,18 +45,15 @@ class _AuthPageState extends State<AuthPage> {
   Widget _buildPasswordTextField() {
     return TextFormField(
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: 'Password',
-      ),
+          labelText: 'Password', filled: true, fillColor: Colors.white),
       obscureText: true,
+      validator: (String value) {
+        if (value.isEmpty || value.length < 6) {
+          return 'Password invalid';
+        }
+      },
       onSaved: (String value) {
         _formData['password'] = value;
-      },
-      validator: (String value) {
-        if (value.isEmpty || value.length < 3) {
-          return 'Password is required and should be 3+ characters long.';
-        }
       },
     );
   }
@@ -84,6 +75,7 @@ class _AuthPageState extends State<AuthPage> {
       return;
     }
     _formKey.currentState.save();
+    print(_formData);
     Navigator.pushReplacementNamed(context, '/products');
   }
 
@@ -91,7 +83,6 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double targetWidth = deviceWidth > 550.0 ? 500.0 : deviceWidth * 0.95;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),

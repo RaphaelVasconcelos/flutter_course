@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course/pages/product_edit.dart';
 
+import './product_edit.dart';
 import './product_list.dart';
 
 class ProductsAdminPage extends StatelessWidget {
@@ -20,9 +20,7 @@ class ProductsAdminPage extends StatelessWidget {
             title: Text('Choose'),
           ),
           ListTile(
-            leading: Icon(
-              Icons.shop,
-            ),
+            leading: Icon(Icons.shop),
             title: Text('All Products'),
             onTap: () {
               Navigator.pushReplacementNamed(context, '/products');
@@ -57,7 +55,7 @@ class ProductsAdminPage extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             ProductEditPage(addProduct: addProduct),
-            ProductListPage(products, updateProduct),
+            ProductListPage(products, updateProduct)
           ],
         ),
       ),

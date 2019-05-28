@@ -7,6 +7,9 @@ import './pages/products.dart';
 import './pages/product.dart';
 
 void main() {
+  // debugPaintSizeEnabled = true;
+  // debugPaintBaselinesEnabled = true;
+  // debugPaintPointersEnabled = true;
   runApp(MyApp());
 }
 
@@ -27,9 +30,9 @@ class _MyAppState extends State<MyApp> {
     print(_products);
   }
 
-  void _updateProduct(int index, Map<String, dynamic> product){
+  void _updateProduct(int index, Map<String, dynamic> product) {
     setState(() {
-     _products[index] =  product; 
+      _products[index] = product;
     });
   }
 

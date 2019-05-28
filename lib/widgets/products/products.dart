@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course/widgets/products/product_card.dart';
+
+import './product_card.dart';
 
 class Products extends StatelessWidget {
   final List<Map<String, dynamic>> products;
@@ -12,7 +13,8 @@ class Products extends StatelessWidget {
     Widget productCards;
     if (products.length > 0) {
       productCards = ListView.builder(
-        itemBuilder: (BuildContext context, index) => ProductCard(products[index], index),
+        itemBuilder: (BuildContext context, int index) =>
+            ProductCard(products[index], index),
         itemCount: products.length,
       );
     } else {
