@@ -69,6 +69,5 @@ class ProductCard extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
