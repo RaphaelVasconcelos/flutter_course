@@ -50,7 +50,8 @@ class ProductCard extends StatelessWidget {
                 model.selectProduct(productIndex);
                 model.toggleProductFavoriteStatus();
               },
-            )
+            ),
+            Text(model.authenticatedUser.email),
           ],
         );
       },
